@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="850.0" style="-fx-background-color: #FEFEE3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.scenecontroller2">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8d8c1" height="544.0" layoutX="419.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="433.0" />
+      <Rectangle fill="#d9d9d9" height="31.0" layoutX="-2.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="60.0" />
+      <Line endX="-66.0" layoutX="111.0" layoutY="14.0" startX="-100.0" strokeWidth="4.0" />
+      <Line endX="-78.0" layoutX="106.0" layoutY="17.0" rotate="20.0" scaleX="0.6" startX="-100.0" strokeWidth="4.0" />
+      <Line endX="-78.0" layoutX="106.0" layoutY="11.0" rotate="-20.0" scaleX="0.6" startX="-100.0" strokeWidth="4.0" />
+      <ImageView fx:id="animalimg" fitHeight="279.0" fitWidth="427.0" layoutY="264.0" onDragDetected="#imgselection" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@dear-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="128.0" layoutY="90.0" text="You can see" textAlignment="CENTER" wrappingWidth="170.68212890625">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Text layoutX="100.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" my info to care" textAlignment="CENTER" wrappingWidth="227.68212890625">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Text layoutX="165.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="me" textAlignment="CENTER" wrappingWidth="84.68212890625">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <TextField fx:id="animal" alignment="CENTER" layoutX="575.0" layoutY="16.0" onAction="#animalselection" prefHeight="39.0" prefWidth="122.0" style="-fx-background-color: #d8d8c1; -fx-font-size: 30; -fx-font-style: b;" text="D01">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="animaldescription" alignment="TOP_LEFT" layoutX="458.0" layoutY="70.0" onAction="#animaldescriptiontostring" prefHeight="393.0" prefWidth="359.0" style="-fx-background-color: #d8d8c1;" text="gfdggfd">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#798051" height="39.0" layoutX="736.0" layoutY="495.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="107.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#525543" height="31.0" layoutX="741.0" layoutY="499.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="96.0" />
+      <Text fill="WHITE" layoutX="757.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Good">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Text>
+      <Button fx:id="good" layoutX="736.0" layoutY="497.0" mnemonicParsing="false" onAction="#confirmation" opacity="0.0" prefHeight="33.0" prefWidth="107.0" />
+      <Button fx:id="back1" mnemonicParsing="false" onAction="#backbyaslide" opacity="0.0" prefHeight="28.0" prefWidth="58.0" />
+   </children>
+</AnchorPane>

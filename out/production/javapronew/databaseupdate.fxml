@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="850.0" style="-fx-background-color: #FEFEE3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.scenecontroller">
+   <children>
+      <Rectangle fx:id="back2" arcHeight="5.0" arcWidth="5.0" fill="#d7d7a5" height="542.0" onDragDetected="#backbyaslide" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="268.0" />
+      <Text layoutX="380.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update the Database" textAlignment="CENTER" wrappingWidth="380.7294921875">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Text>
+      <Text layoutX="66.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="medicine:" textAlignment="CENTER" wrappingWidth="136.0390625">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="84.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount:" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="107.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="food:" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="medione" alignment="CENTER" layoutX="286.0" layoutY="75.0" onAction="#getmediname" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="fdfs">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="meditwo" alignment="CENTER" layoutX="470.0" layoutY="75.0" onAction="#getmeditwoname" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="hi">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="medithree" alignment="CENTER" layoutX="654.0" layoutY="75.0" onAction="#getmedithreename" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="hee">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="medioneamount" alignment="CENTER" layoutX="286.0" layoutY="144.0" onAction="#getmedioneamount" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="fdfs">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="meditwoamount" alignment="CENTER" layoutX="470.0" layoutY="144.0" onAction="#getmeditwoamount" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="hi">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="medithreeamount" alignment="CENTER" layoutX="654.0" layoutY="144.0" onAction="#getmedithreeamount" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="hee">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="foodpackamount" alignment="CENTER" layoutX="286.0" layoutY="210.0" onAction="#getfoodpackamount" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="fdfs">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#798051" height="39.0" layoutX="736.0" layoutY="495.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="107.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#525543" height="31.0" layoutX="741.0" layoutY="499.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="96.0" />
+      <Text fill="WHITE" layoutX="742.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="confirm" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Text>
+      <Button fx:id="confirmation" layoutX="736.0" layoutY="497.0" mnemonicParsing="false" onAction="#updateconfimation" opacity="0.0" prefHeight="33.0" prefWidth="107.0" />
+      <Rectangle fill="#d9d9d9" height="31.0" layoutX="-2.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="60.0" />
+      <Line endX="-66.0" layoutX="111.0" layoutY="14.0" startX="-100.0" strokeWidth="4.0" />
+      <Line endX="-78.0" layoutX="106.0" layoutY="17.0" rotate="20.0" scaleX="0.6" startX="-100.0" strokeWidth="4.0" />
+      <Line endX="-78.0" layoutX="106.0" layoutY="11.0" rotate="-20.0" scaleX="0.6" startX="-100.0" strokeWidth="4.0" />
+      <Button fx:id="back" mnemonicParsing="false" onAction="#backbyaslide" opacity="0.0" prefHeight="28.0" prefWidth="58.0" />
+      <TextField fx:id="foodpackamount1" alignment="CENTER" layoutX="470.0" layoutY="210.0" onAction="#getfoodpackamount" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="hi">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="foodpackamount2" alignment="CENTER" layoutX="654.0" layoutY="211.0" onAction="#getfoodpackamount" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="hee">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <Text layoutX="84.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="amount:" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="foodpackamount3" alignment="CENTER" layoutX="286.0" layoutY="267.0" onAction="#getfoodpackamount" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="fdfs">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="foodpackamount4" alignment="CENTER" layoutX="654.0" layoutY="267.0" onAction="#getfoodpackamount" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="hee">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="foodpackamount5" alignment="CENTER" layoutX="470.0" layoutY="267.0" onAction="#getfoodpackamount" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #D9D9D9;" text="hi">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
