@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Desk4Form" prefHeight="800.0" prefWidth="1080.0" style="-fx-background-color: #9BA88F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Desk4Controller">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="364.0" style="-fx-background-color: D9D9D9;">
+         <children>
+            <Label layoutX="48.0" layoutY="50.0" text="Identity :">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="107.0" text="Description on Problem :">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="252.0" text="Dose at a time :">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="324.0" text="Before/after Food :">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="46.0" layoutY="400.0" text="Food pack at a time :">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="484.0" text="No.of times per day:">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="48.0" layoutY="547.0" prefHeight="94.0" prefWidth="251.0" text="No.of days food structure to be followed:" wrapText="true">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="182.0" text="Medicine Name :">
+               <font>
+                  <Font name="Segoe UI Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="identityTxt" layoutX="416.0" layoutY="43.0" prefHeight="31.0" prefWidth="397.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="descriptionTxt" layoutX="417.0" layoutY="109.0" prefHeight="31.0" prefWidth="614.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="med1Txt" layoutX="416.0" layoutY="186.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="med2Txt" layoutX="630.0" layoutY="186.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="med3Txt" layoutX="842.0" layoutY="186.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="dose1Txt" layoutX="416.0" layoutY="252.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="dose2Txt" layoutX="630.0" layoutY="252.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="dose3Txt" layoutX="842.0" layoutY="252.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="food_ins1Txt" layoutX="416.0" layoutY="321.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="food_ins2Txt" layoutX="630.0" layoutY="321.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="food_ins3Txt" layoutX="842.0" layoutY="321.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="foodTxt" layoutX="416.0" layoutY="400.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="packTxt" layoutX="630.0" layoutY="400.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="timesTxt" layoutX="416.0" layoutY="483.0" style="-fx-background-radius: 8px;" />
+      <TextField fx:id="daysTxt" layoutX="416.0" layoutY="565.0" style="-fx-background-radius: 8px;" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#798051" height="44.0" layoutX="750.0" layoutY="711.0" stroke="#798051" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="119.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#798051" height="44.0" layoutX="909.0" layoutY="712.0" stroke="#798051" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="119.0" />
+      <Button layoutX="913.0" layoutY="716.0" mnemonicParsing="false" onAction="#submitOnAction" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: #525543; -fx-background-radius: 8px;" text="Submit" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="754.0" layoutY="716.0" mnemonicParsing="false" onAction="#backonAction" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: #525543; -fx-background-radius: 8px;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
