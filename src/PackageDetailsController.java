@@ -1,7 +1,10 @@
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.sql.*;
 
@@ -15,7 +18,9 @@ public class PackageDetailsController {
     public Label medithreeamount;
     public Label foodpackamount;
     public Label foodpackamount3;
+    public AnchorPane Update;
     private String animalTag;
+    private Stage stage;
 
     public void setAnimalTag(String animalTag) {
         this.animalTag = animalTag;
@@ -92,5 +97,7 @@ public class PackageDetailsController {
     }
 
     public void updateconfimation(ActionEvent actionEvent) {
+        stage = (Stage)Update.getScene().getWindow();
+        stage.close();
     }
 }

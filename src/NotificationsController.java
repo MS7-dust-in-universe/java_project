@@ -1,7 +1,9 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,6 +15,8 @@ import java.util.List;
 
 public class NotificationsController {
     public VBox vbox;
+    public AnchorPane notifications;
+    private Stage stage;
 
 
     @FXML
@@ -56,4 +60,10 @@ public class NotificationsController {
         return animalTags;
 
          }
+
+    public void LogoutOnAction(ActionEvent actionEvent) {
+        stage = (Stage)notifications.getScene().getWindow();
+        stage.close();
+
     }
+}
