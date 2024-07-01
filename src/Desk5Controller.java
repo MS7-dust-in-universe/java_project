@@ -73,7 +73,7 @@ public class Desk5Controller {
 
             while (resultSet.next()) {
                 String medName = resultSet.getString("med_name");
-                String dose = resultSet.getString("dose_at_a_time");
+                int dose = resultSet.getInt("dose_at_a_time");
                 String instruction = resultSet.getString("food_instructions");
                 desc.append("  - ").append(medName).append(" with a dose of ").append(dose).append(" ").append(instruction).append(" the food.\n");
             }

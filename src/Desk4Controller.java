@@ -86,20 +86,20 @@ public class Desk4Controller {
             PreparedStatement medDetStmt = conn.prepareStatement(medDetQuery);
             medDetStmt.setInt(1, prescriptionId);
             medDetStmt.setString(2, med1);
-            medDetStmt.setString(3,dose1);
+            medDetStmt.setInt(3,Integer.parseInt(dose1));
             medDetStmt.setString(4,ins1);
             medDetStmt.executeUpdate();
 
             // Add more med_det rows if necessary
             if (!med2.isEmpty()) {
                 medDetStmt.setString(2, med2);
-                medDetStmt.setString(3,dose2);
+                medDetStmt.setInt(3,Integer.parseInt(dose2));
                 medDetStmt.setString(4,ins2);
                 medDetStmt.executeUpdate();
             }
             if (!med3.isEmpty()) {
                 medDetStmt.setString(2, med3);
-                medDetStmt.setString(3,dose3);
+                medDetStmt.setInt(3,Integer.parseInt(dose3));
                 medDetStmt.setString(4,ins3);
                 medDetStmt.executeUpdate();
             }
