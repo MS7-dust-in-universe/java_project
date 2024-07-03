@@ -1,10 +1,15 @@
+import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.sql.*;
 
 public class AlertDetailsController {
     public Label animalDetailsTxt;
+    public AnchorPane AlertDetails;
     private String animalTag;
+    private Stage stage;
 
     public void setAnimalTag(String animalTag) {
         this.animalTag = animalTag;
@@ -61,5 +66,10 @@ public class AlertDetailsController {
             }
         }
 
+    }
+
+    public void ConfirmOnAction(ActionEvent actionEvent) {
+        stage = (Stage)AlertDetails.getScene().getWindow();
+        stage.close();
     }
 }
