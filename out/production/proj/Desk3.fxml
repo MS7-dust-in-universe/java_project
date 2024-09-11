@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="800.0" prefWidth="1080.0" style="-fx-background-color: FEFEE3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Desk3Controller">
@@ -47,13 +48,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="-20.0" layoutY="-2.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="34.0" prefWidth="93.0" style="-fx-background-radius: 20px;">
+      <Rectangle fill="#d9d9d9" height="39.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="72.0" />
+      <Button layoutX="1.0" layoutY="-1.0" mnemonicParsing="false" onAction="#backBtn" opacity="0.0" prefHeight="39.0" prefWidth="72.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Line endX="-60.0" layoutX="121.0" layoutY="14.0" startX="-106.0" />
-      <Line endX="-78.0" endY="8.0" layoutX="115.0" layoutY="14.0" startX="-100.0" />
-      <Line endX="-79.0" endY="-11.0" layoutX="121.0" layoutY="16.0" startX="-105.0" startY="-1.0" />
+      <Line endX="-85.0" endY="8.0" layoutX="116.0" layoutY="17.0" startX="-100.0" strokeWidth="4.0" />
+      <Line endX="-84.0" endY="-7.0" layoutX="116.0" layoutY="18.0" startX="-100.0" strokeWidth="4.0" />
+      <Line endX="-58.0" endY="1.52587890625E-5" layoutX="116.0" layoutY="17.0" startX="-100.0" strokeWidth="4.0" />
    </children>
 </AnchorPane>

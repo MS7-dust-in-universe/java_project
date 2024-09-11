@@ -73,6 +73,7 @@
               <columns>
                 <TableColumn fx:id="animalTagColumn" prefWidth="218.0" text="Animal Tag" />
                 <TableColumn fx:id="foodNameColumn" minWidth="0.0" prefWidth="219.0" text="Food Name" />
+                  <TableColumn fx:id="descriptionColumn" prefWidth="256.0" text="Description" />
               </columns>
             </TableView>
          </children></AnchorPane>

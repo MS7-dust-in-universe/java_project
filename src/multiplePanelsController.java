@@ -38,6 +38,10 @@ public class multiplePanelsController {
     private TableColumn<Prescription, String> foodNameColumn;
 
     @FXML
+    private TableColumn<Prescription, String> descriptionColumn;
+
+
+    @FXML
     private TextField deleteTextField;
     
 
@@ -45,6 +49,7 @@ public class multiplePanelsController {
 
     private Stage stage;
     private Scene scene;
+
 
     public void messageOnAction(ActionEvent actionEvent) throws IOException {
        // actionEvent.consume();
@@ -124,7 +129,7 @@ public class multiplePanelsController {
         // Set up the table columns
         animalTagColumn.setCellValueFactory(new PropertyValueFactory<>("animalTag"));
         foodNameColumn.setCellValueFactory(new PropertyValueFactory<>("foodName"));
-
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("desc"));
 
         // Load data into the table
         if (tableView.getItems().isEmpty()) {
@@ -133,18 +138,29 @@ public class multiplePanelsController {
 
         // Set the table's items
         tableView.setItems(prescriptions);
+
+        tableView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                Prescription prescription = tableView.getSelectionModel().getSelectedItem();
+                if (prescription != null) {
+                    deleteTextField.setText(prescription.getAnimalTag());
+                }
+            }
+        });
+
     }
 
     // Load data from the database
     private void loadData() {
         try ( Connection conn = LoginFormController.connectDB();
               Statement statement = conn.createStatement();
-              ResultSet resultSet = statement.executeQuery("SELECT animal_tag, food_name  FROM prescription ")) {
+              ResultSet resultSet = statement.executeQuery("SELECT animal_tag, food_name, description  FROM prescription ")) {
 
             while (resultSet.next()) {
                 String animalTag = resultSet.getString("animal_tag");
                 String foodName = resultSet.getString("food_name");
-                prescriptions.add(new Prescription(animalTag, foodName));
+                String desc = resultSet.getString("description");
+                prescriptions.add(new Prescription(animalTag, foodName, desc));
             }
 
         } catch (SQLException e) {
@@ -173,12 +189,13 @@ public class multiplePanelsController {
         public static class Prescription {
             private String animalTag;
             private String foodName;
+            private String desc;
 
 
-            public Prescription(String animalTag, String foodName) {
+            public Prescription(String animalTag, String foodName, String desc) {
                 this.animalTag = animalTag;
                 this.foodName = foodName;
-
+                this.desc = desc;
             }
 
             public String getAnimalTag() {
@@ -188,6 +205,8 @@ public class multiplePanelsController {
             public String getFoodName() {
                 return foodName;
             }
+
+            public String getDesc() { return desc; }
 
         }
 

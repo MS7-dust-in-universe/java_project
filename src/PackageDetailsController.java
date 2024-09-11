@@ -1,11 +1,17 @@
 import com.mysql.cj.x.protobuf.MysqlxCrud;
+import javafx.collections.transformation.TransformationList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class PackageDetailsController {
@@ -21,6 +27,7 @@ public class PackageDetailsController {
     public AnchorPane Update;
     private String animalTag;
     private Stage stage;
+    private Scene scene;
 
     public void setAnimalTag(String animalTag) {
         this.animalTag = animalTag;
@@ -93,7 +100,13 @@ public class PackageDetailsController {
 
 
 
-    public void backbyaslide(MouseEvent mouseEvent) {
+    public void backbyaslide(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Notifications.fxml"));
+        Parent root = fxmlLoader.load();
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void updateconfimation(ActionEvent actionEvent) {
