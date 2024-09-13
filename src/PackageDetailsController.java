@@ -90,8 +90,6 @@ public class PackageDetailsController {
                 break;
             }
 
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
