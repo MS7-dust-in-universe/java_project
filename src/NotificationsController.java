@@ -39,8 +39,6 @@ public class NotificationsController {
             alertController.setAnimalTag(animalTag);
             vbox.getChildren().add(alertPane);
         }
-
-
     }
 
     private List<String> retrieveAnimalTagsFromDatabase() {

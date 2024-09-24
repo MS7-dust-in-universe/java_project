@@ -12,7 +12,7 @@ public class alertController {
     public AnchorPane alertPane;
     public Label alertTxt;
     public Button showmoreBtn;
-    private String animalTag;
+    public String animalTag;
 
     public void setAnimalTag(String animalTag) {
         this.animalTag = animalTag;

@@ -68,7 +68,7 @@ public class Desk4Controller {
             }
 
             // Update the prescription table
-            String prescriptionQuery = "INSERT INTO prescription (animal_tag, description,food_name,pack_at_a_time,no_of_times_per_day,no_of_days) VALUES (?,?,?,?,?,?)";
+            String prescriptionQuery = "INSERT INTO prescription (animal_tag, description,food_name,pack_at_a_time,no_of_times_per_day,no_of_days,days_remains) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement prescriptionStmt = conn.prepareStatement(prescriptionQuery);
             prescriptionStmt.setString(1, identity);
             prescriptionStmt.setString(2, desc);
@@ -76,6 +76,7 @@ public class Desk4Controller {
             prescriptionStmt.setInt(4, Integer.parseInt(pack));
             prescriptionStmt.setInt(5, Integer.parseInt(no_time));
             prescriptionStmt.setInt(6,Integer.parseInt(no_days));
+            prescriptionStmt.setInt(7,Integer.parseInt(no_days));
             prescriptionStmt.executeUpdate();
 
             // Get the prescription ID

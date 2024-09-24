@@ -69,7 +69,65 @@ public class AlertDetailsController {
     }
 
     public void ConfirmOnAction(ActionEvent actionEvent) {
+        updateDaysRemains(animalTag);
         stage = (Stage)AlertDetails.getScene().getWindow();
         stage.close();
     }
+
+    public void deleteOnAction(ActionEvent actionEvent) {
+        deletePrescription(animalTag);
+        // Remove the alert GUI from the messages GUI
+        multiplePanelsController controller = (multiplePanelsController) AlertDetails.getScene().getUserData();
+        if (controller != null) {
+            controller.removeAlert(animalTag);
+        }
+        stage = (Stage) AlertDetails.getScene().getWindow();
+        stage.close();
+    }
+
+    private void updateDaysRemains(String animalTag) {
+        Connection conn = LoginFormController.connectDB();
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "UPDATE prescription SET days_remains = no_of_days WHERE animal_tag = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, animalTag);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error updating days_remains: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error closing connection: " + e.getMessage());
+            }
+        }
+    }
+
+    private void deletePrescription(String animalTag) {
+        Connection conn = LoginFormController.connectDB();
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "DELETE FROM prescription WHERE animal_tag = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, animalTag);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error deleting prescription: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close ();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error closing connection: " + e.getMessage());
+            }
+        }
+    }
+
+
 }

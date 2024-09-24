@@ -57,23 +57,23 @@ public class multiplePanelsController {
         main.setVisible(true);
         screen1.setVisible(true);
         screen2.setVisible(false);
-        List<String> animalTags = retrieveAnimalTagsFromDatabase();
+       // List<String> animalTags = retrieveAnimalTagsFromDatabase();
 
 
-        vbox.getChildren().clear();
-        // Create a separate alert GUI for each animal tag
-       /* ScrollPane scrollPane = new ScrollPane(vbox);
-        scrollPane.setStyle("-fx-background-color:  #9BA88F;");
+       // vbox.getChildren().clear();
+        Connection conn = LoginFormController.connectDB();
 
-        scrollPane.setFitToWidth(true);
-        scrollPane.setFitToHeight(true);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "SELECT animal_tag FROM prescription WHERE days_remains = 0";
+            ResultSet resultSet = stmt.executeQuery(query);
 
-        */
+            List<String> animalTagsList = new ArrayList<>();
+            while (resultSet.next()) {
+                animalTagsList.add(resultSet.getString("animal_tag"));
+            }
 
-
-        for (String animalTag : animalTags) {
+        for (String animalTag : animalTagsList) {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("alert.fxml"));
             AnchorPane alertPane = loader.load();
@@ -81,9 +81,35 @@ public class multiplePanelsController {
             alertController.setAnimalTag(animalTag);
             vbox.getChildren().add(alertPane);
         }
+
        // screen1.getChildren().add(scrollPane);
+        } catch (SQLException e) {
+            System.err.println("Error executing query: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error closing connection: " + e.getMessage());
+            }
+        }
+
     }
 
+    public void removeAlert(String animalTag) {
+        for (Node node : vbox.getChildren()) {
+            if (node instanceof AnchorPane) {
+                AnchorPane alertPane = (AnchorPane) node;
+                alertController alertController = (alertController) alertPane.getUserData();
+                if (alertController != null && alertController.animalTag.equals(animalTag)) {
+                    vbox.getChildren().remove(node);
+                    break;
+                }
+            }
+        }
+    }
 
 
     private List<String> retrieveAnimalTagsFromDatabase() {
@@ -171,7 +197,6 @@ public class multiplePanelsController {
         public void deleteOnAction (ActionEvent actionEvent){
             try {
                 String prescriptionId = deleteTextField.getText();
-
                 // Delete from prescription table
                 Connection conn = LoginFormController.connectDB();
                 PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM prescription WHERE animal_tag =?");
@@ -183,7 +208,6 @@ public class multiplePanelsController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
         }
 
         public static class Prescription {
@@ -209,6 +233,4 @@ public class multiplePanelsController {
             public String getDesc() { return desc; }
 
         }
-
-
     }
