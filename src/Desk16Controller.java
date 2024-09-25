@@ -37,8 +37,8 @@ public class Desk16Controller {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-
     }
+
     public void displayName2(String username){
         docTextField.setText("Doctor");
     }
@@ -67,7 +67,6 @@ public class Desk16Controller {
                 String animalTag = result.getString("animal_tag");
                 animalTags.add(animalTag);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -85,7 +84,6 @@ public class Desk16Controller {
                 e.printStackTrace();
             }
         }
-
         return animalTags;
     }
 }

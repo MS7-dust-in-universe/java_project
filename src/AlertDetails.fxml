@@ -7,20 +7,20 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AlertDetails" prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: FEFEE3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AlertDetailsController">
+<AnchorPane fx:id="AlertDetails" prefHeight="800.0" prefWidth="1080.0" style="-fx-background-color: FEFEE3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AlertDetailsController">
    <children>
-      <Label fx:id="animalDetailsTxt" alignment="CENTER" layoutX="14.0" layoutY="21.0" lineSpacing="10.0" prefHeight="508.0" prefWidth="868.0">
+      <Label fx:id="animalDetailsTxt" alignment="CENTER" layoutX="94.0" layoutY="57.0" lineSpacing="10.0" prefHeight="496.0" prefWidth="886.0">
          <font>
             <Font name="Segoe UI" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="138.0" layoutY="529.0" prefHeight="37.0" prefWidth="406.0" text="Continue the Prescription or not?">
+      <Label layoutX="131.0" layoutY="623.0" prefHeight="37.0" prefWidth="406.0" text="Continue the Prescription or not?">
          <font>
             <Font name="Segoe UI Bold" size="24.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#798051" height="45.0" layoutX="572.0" layoutY="527.0" stroke="#798051" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="114.0" />
-      <Button fx:id="confirmBtn" layoutX="578.0" layoutY="531.0" mnemonicParsing="false" onAction="#ConfirmOnAction" prefHeight="37.0" prefWidth="102.0" style="-fx-background-color: #525543; -fx-background-radius: 8px;" text="Yes" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#798051" height="45.0" layoutX="548.0" layoutY="619.0" stroke="#798051" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="114.0" />
+      <Button fx:id="confirmBtn" layoutX="554.0" layoutY="623.0" mnemonicParsing="false" onAction="#ConfirmOnAction" prefHeight="37.0" prefWidth="102.0" style="-fx-background-color: #525543; -fx-background-radius: 8px;" text="Yes" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold" size="18.0" />
          </font>
@@ -28,8 +28,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#798051" height="45.0" layoutX="699.0" layoutY="527.0" stroke="#798051" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="114.0" />
-      <Button fx:id="deletebtn" layoutX="705.0" layoutY="531.0" mnemonicParsing="false" onAction="#deleteOnAction" prefHeight="37.0" prefWidth="102.0" style="-fx-background-color: #525543; -fx-background-radius: 8px;" text="No" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#798051" height="45.0" layoutX="708.0" layoutY="619.0" stroke="#798051" strokeType="INSIDE" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="114.0" />
+      <Button fx:id="deletebtn" layoutX="714.0" layoutY="623.0" mnemonicParsing="false" onAction="#deleteOnAction" prefHeight="37.0" prefWidth="102.0" style="-fx-background-color: #525543; -fx-background-radius: 8px;" text="No" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold" size="18.0" />
          </font>
