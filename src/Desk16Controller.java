@@ -22,7 +22,6 @@ public class Desk16Controller {
     private Stage stage;
     private Scene scene;
     private Labeled docTextField;
-    public ListView<Prescription> listview;
     private String username;
 
 

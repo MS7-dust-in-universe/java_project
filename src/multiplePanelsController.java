@@ -173,7 +173,6 @@ public class multiplePanelsController {
                 }
             }
         });
-
     }
 
     // Load data from the database
@@ -188,7 +187,6 @@ public class multiplePanelsController {
                 String desc = resultSet.getString("description");
                 prescriptions.add(new Prescription(animalTag, foodName, desc));
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

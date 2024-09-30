@@ -84,14 +84,25 @@ public class AlertDetailsController {
         stage.close();
 
         */
-        try {
-            backAlert(actionEvent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         // Display the alert in the notifications GUI
         NotificationsController notificationsController = new NotificationsController();
         notificationsController.displayAlert(animalTag);
+
+        /*multiplePanelsController controller = (multiplePanelsController)this.AlertDetails.getScene().getUserData();
+        if (controller != null) {
+            controller.removeAlert(this.animalTag);
+        }
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("multiplePanels.fxml"));
+        Parent root = (Parent)fxmlLoader.load();
+        this.stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        this.scene = new Scene(root);
+        this.stage.setScene(this.scene);
+        this.stage.show();
+
+         */
     }
 
     public void deleteOnAction(ActionEvent actionEvent) throws IOException {

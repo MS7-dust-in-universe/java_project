@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,15 @@ public class NotificationsController {
     private Scene scene;
 
 
+    private static NotificationsController instance;
+
+    public static NotificationsController getInstance() {
+        if (instance == null) {
+            instance = new NotificationsController();
+        }
+        return instance;
+    }
+
     @FXML
     public void initialize() throws IOException {
 
@@ -47,7 +57,6 @@ public class NotificationsController {
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT animal_tag FROM prescription");
-
             // Iterate over the result set and add the animal tags to the list
             while (rs.next()) {
                 animalTags.add(rs.getString("animal_tag"));
@@ -71,5 +80,24 @@ public class NotificationsController {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public void displayAlert(String animalTag) throws IOException {
+        Platform.runLater(() -> {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("alert.fxml"));
+                AnchorPane alertPane = loader.load();
+                alertController alertController = loader.getController();
+                if (alertController != null) {
+                    alertController.setAnimalTag(animalTag);
+                    vbox.getChildren().add(alertPane);
+                } else {
+                    System.out.println("alertController is null");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
