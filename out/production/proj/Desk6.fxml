@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -32,41 +33,6 @@
                 <Font name="Segoe UI Bold" size="24.0" />
             </font>
         </Text>
-        <TextField fx:id="medione" alignment="CENTER" layoutX="370.0" layoutY="191.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="meditwo" alignment="CENTER" layoutX="600.0" layoutY="191.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="medithree" alignment="CENTER" layoutX="830.0" layoutY="191.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="medioneamount" alignment="CENTER" layoutX="370.0" layoutY="310.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="meditwoamount" alignment="CENTER" layoutX="600.0" layoutY="310.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="medithreeamount" alignment="CENTER" layoutX="830.0" layoutY="310.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="foodpackamount" alignment="CENTER" layoutX="370.0" layoutY="438.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
         <Rectangle fill="#d9d9d9" height="31.0" layoutX="-2.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="60.0" />
         <Line endX="-66.0" layoutX="111.0" layoutY="14.0" startX="-100.0" strokeWidth="4.0" />
         <Line endX="-78.0" layoutX="106.0" layoutY="17.0" rotate="20.0" scaleX="0.6" startX="-100.0" strokeWidth="4.0" />
@@ -75,36 +41,11 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <TextField fx:id="foodpackamount1" alignment="CENTER" layoutX="600.0" layoutY="438.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="foodpackamount2" alignment="CENTER" layoutX="830.0" layoutY="438.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
         <Text layoutX="89.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount:" textAlignment="CENTER">
             <font>
                 <Font name="Segoe UI Bold" size="24.0" />
             </font>
         </Text>
-        <TextField fx:id="foodpackamount3" alignment="CENTER" layoutX="370.0" layoutY="561.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="foodpackamount4" alignment="CENTER" layoutX="830.0" layoutY="561.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="foodpackamount5" alignment="CENTER" layoutX="600.0" layoutY="561.0"  prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </TextField>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#798051" height="44.0" layoutX="863.0" layoutY="702.0" stroke="#798051" strokeType="INSIDE" style="-fx-arc-height: 20px; -fx-arc-width: 20px;" width="143.0" />
       <Button layoutX="867.0" layoutY="707.0" mnemonicParsing="false" onAction="#updateconfimation" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #525543; -fx-background-radius: 8px;" text="Confirm" textFill="WHITE">
          <cursor>
@@ -114,5 +55,45 @@
             <Font name="Segoe UI Bold" size="18.0" />
          </font>
       </Button>
+      <Label fx:id="med1txt" alignment="CENTER" layoutX="370.0" layoutY="191.0" prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="food1txt" alignment="CENTER" layoutX="370.0" layoutY="438.0" prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="med3txt" alignment="CENTER" layoutX="830.0" layoutY="191.0" prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="med2txt" alignment="CENTER" layoutX="600.0" layoutY="191.0" prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="amount1txt" alignment="CENTER" layoutX="370.0" layoutY="310.0" prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="amount3txt" layoutX="830.0" layoutY="310.0" prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="amount2txt" alignment="CENTER" layoutX="600.0" layoutY="310.0" prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="amount1" alignment="CENTER" layoutX="370.0" layoutY="561.0" prefHeight="44.0" prefWidth="176.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 8px;">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
     </children>
 </AnchorPane>

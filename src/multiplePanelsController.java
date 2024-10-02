@@ -38,6 +38,10 @@ public class multiplePanelsController {
     private TableColumn<Prescription, String> foodNameColumn;
 
     @FXML
+    private TableColumn<Prescription, String> descriptionColumn;
+
+
+    @FXML
     private TextField deleteTextField;
     
 
@@ -46,29 +50,30 @@ public class multiplePanelsController {
     private Stage stage;
     private Scene scene;
 
+
     public void messageOnAction(ActionEvent actionEvent) throws IOException {
        // actionEvent.consume();
 
         main.setVisible(true);
         screen1.setVisible(true);
         screen2.setVisible(false);
-        List<String> animalTags = retrieveAnimalTagsFromDatabase();
+       // List<String> animalTags = retrieveAnimalTagsFromDatabase();
 
 
-        vbox.getChildren().clear();
-        // Create a separate alert GUI for each animal tag
-       /* ScrollPane scrollPane = new ScrollPane(vbox);
-        scrollPane.setStyle("-fx-background-color:  #9BA88F;");
+       // vbox.getChildren().clear();
+        Connection conn = LoginFormController.connectDB();
 
-        scrollPane.setFitToWidth(true);
-        scrollPane.setFitToHeight(true);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "SELECT animal_tag FROM prescription WHERE days_remains = 0";
+            ResultSet resultSet = stmt.executeQuery(query);
 
-        */
+            List<String> animalTagsList = new ArrayList<>();
+            while (resultSet.next()) {
+                animalTagsList.add(resultSet.getString("animal_tag"));
+            }
 
-
-        for (String animalTag : animalTags) {
+        for (String animalTag : animalTagsList) {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("alert.fxml"));
             AnchorPane alertPane = loader.load();
@@ -76,9 +81,35 @@ public class multiplePanelsController {
             alertController.setAnimalTag(animalTag);
             vbox.getChildren().add(alertPane);
         }
+
        // screen1.getChildren().add(scrollPane);
+        } catch (SQLException e) {
+            System.err.println("Error executing query: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error closing connection: " + e.getMessage());
+            }
+        }
+
     }
 
+    public void removeAlert(String animalTag) {
+        for (Node node : vbox.getChildren()) {
+            if (node instanceof AnchorPane) {
+                AnchorPane alertPane = (AnchorPane) node;
+                alertController alertController = (alertController) alertPane.getUserData();
+                if (alertController != null && alertController.animalTag.equals(animalTag)) {
+                    vbox.getChildren().remove(node);
+                    break;
+                }
+            }
+        }
+    }
 
 
     private List<String> retrieveAnimalTagsFromDatabase() {
@@ -124,7 +155,7 @@ public class multiplePanelsController {
         // Set up the table columns
         animalTagColumn.setCellValueFactory(new PropertyValueFactory<>("animalTag"));
         foodNameColumn.setCellValueFactory(new PropertyValueFactory<>("foodName"));
-
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("desc"));
 
         // Load data into the table
         if (tableView.getItems().isEmpty()) {
@@ -133,20 +164,29 @@ public class multiplePanelsController {
 
         // Set the table's items
         tableView.setItems(prescriptions);
+
+        tableView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                Prescription prescription = tableView.getSelectionModel().getSelectedItem();
+                if (prescription != null) {
+                    deleteTextField.setText(prescription.getAnimalTag());
+                }
+            }
+        });
     }
 
     // Load data from the database
     private void loadData() {
         try ( Connection conn = LoginFormController.connectDB();
               Statement statement = conn.createStatement();
-              ResultSet resultSet = statement.executeQuery("SELECT animal_tag, food_name  FROM prescription ")) {
+              ResultSet resultSet = statement.executeQuery("SELECT animal_tag, food_name, description  FROM prescription ")) {
 
             while (resultSet.next()) {
                 String animalTag = resultSet.getString("animal_tag");
                 String foodName = resultSet.getString("food_name");
-                prescriptions.add(new Prescription(animalTag, foodName));
+                String desc = resultSet.getString("description");
+                prescriptions.add(new Prescription(animalTag, foodName, desc));
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -155,7 +195,6 @@ public class multiplePanelsController {
         public void deleteOnAction (ActionEvent actionEvent){
             try {
                 String prescriptionId = deleteTextField.getText();
-
                 // Delete from prescription table
                 Connection conn = LoginFormController.connectDB();
                 PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM prescription WHERE animal_tag =?");
@@ -167,18 +206,18 @@ public class multiplePanelsController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
         }
 
         public static class Prescription {
             private String animalTag;
             private String foodName;
+            private String desc;
 
 
-            public Prescription(String animalTag, String foodName) {
+            public Prescription(String animalTag, String foodName, String desc) {
                 this.animalTag = animalTag;
                 this.foodName = foodName;
-
+                this.desc = desc;
             }
 
             public String getAnimalTag() {
@@ -189,7 +228,7 @@ public class multiplePanelsController {
                 return foodName;
             }
 
+            public String getDesc() { return desc; }
+
         }
-
-
     }

@@ -1,6 +1,10 @@
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -17,7 +21,17 @@ public class NotificationsController {
     public VBox vbox;
     public AnchorPane notifications;
     private Stage stage;
+    private Scene scene;
 
+
+    private static NotificationsController instance;
+
+    public static NotificationsController getInstance() {
+        if (instance == null) {
+            instance = new NotificationsController();
+        }
+        return instance;
+    }
 
     @FXML
     public void initialize() throws IOException {
@@ -35,8 +49,6 @@ public class NotificationsController {
             alertController.setAnimalTag(animalTag);
             vbox.getChildren().add(alertPane);
         }
-
-
     }
 
     private List<String> retrieveAnimalTagsFromDatabase() {
@@ -45,7 +57,6 @@ public class NotificationsController {
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT animal_tag FROM prescription");
-
             // Iterate over the result set and add the animal tags to the list
             while (rs.next()) {
                 animalTags.add(rs.getString("animal_tag"));
@@ -61,9 +72,32 @@ public class NotificationsController {
 
          }
 
-    public void LogoutOnAction(ActionEvent actionEvent) {
-        stage = (Stage)notifications.getScene().getWindow();
-        stage.close();
+    public void LogoutOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginForm.fxml"));
+        Parent root = fxmlLoader.load();
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
+    }
+
+    public void displayAlert(String animalTag) throws IOException {
+        Platform.runLater(() -> {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("alert.fxml"));
+                AnchorPane alertPane = loader.load();
+                alertController alertController = loader.getController();
+                if (alertController != null) {
+                    alertController.setAnimalTag(animalTag);
+                    vbox.getChildren().add(alertPane);
+                } else {
+                    System.out.println("alertController is null");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

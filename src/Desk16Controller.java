@@ -2,14 +2,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Labeled;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -26,6 +24,7 @@ public class Desk16Controller {
     private Labeled docTextField;
     private String username;
 
+
     public void submitOnAction(ActionEvent actionEvent) throws IOException {
         String enteredAnimalTag = animaltagTxt.getText();
 
@@ -37,8 +36,8 @@ public class Desk16Controller {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-
     }
+
     public void displayName2(String username){
         docTextField.setText("Doctor");
     }
@@ -46,6 +45,29 @@ public class Desk16Controller {
     public void initialize() {
         ObservableList<String> animalTags = getAnimalTags();
         animalTagsListView.setItems(animalTags);
+
+        /*listview.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                Prescription prescription = listview.getSelectionModel().getSelectedItem();
+                if (prescription != null) {
+                    animaltagTxt.setText(prescription.getAnimalTag());
+                }
+            }
+        });
+
+         */
+
+
+
+        // Add a listener for ListView selection changes
+        animalTagsListView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    // Update the TextField when the selection changes
+                    animaltagTxt.setText(newValue);
+                }
+        );
+
+
     }
 
     public ObservableList<String> getAnimalTags() {
@@ -67,7 +89,6 @@ public class Desk16Controller {
                 String animalTag = result.getString("animal_tag");
                 animalTags.add(animalTag);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -85,8 +106,31 @@ public class Desk16Controller {
                 e.printStackTrace();
             }
         }
-
         return animalTags;
+    }
+
+    public static class Prescription {
+        private String animalTag;
+        private String foodName;
+        private String desc;
+
+
+        public Prescription(String animalTag, String foodName, String desc) {
+            this.animalTag = animalTag;
+            this.foodName = foodName;
+            this.desc = desc;
+        }
+
+        public String getAnimalTag() {
+            return animalTag;
+        }
+
+        public String getFoodName() {
+            return foodName;
+        }
+
+        public String getDesc() { return desc; }
+
     }
 }
 

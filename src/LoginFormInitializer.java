@@ -15,13 +15,10 @@ public class LoginFormInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-
         URL resource = getClass().getResource("LoginForm.fxml");
         Parent load = FXMLLoader.load(resource);
         Scene scene = new Scene(load);
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
 }

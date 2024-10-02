@@ -1,10 +1,25 @@
+import javafx.collections.transformation.TransformationList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class AlertDetailsController {
     public Label animalDetailsTxt;
+    public AnchorPane AlertDetails;
     private String animalTag;
+    private Stage stage;
+    private ActionEvent actionEvent;
+    private Scene scene;
+    private multiplePanelsController multiplePanelsController;
+
 
     public void setAnimalTag(String animalTag) {
         this.animalTag = animalTag;
@@ -62,4 +77,116 @@ public class AlertDetailsController {
         }
 
     }
+
+    public void ConfirmOnAction(ActionEvent actionEvent) throws IOException {
+        updateDaysRemains(animalTag);
+       /* stage = (Stage)AlertDetails.getScene().getWindow();
+        stage.close();
+
+        */
+
+        // Display the alert in the notifications GUI
+        NotificationsController notificationsController = new NotificationsController();
+        notificationsController.displayAlert(animalTag);
+
+        /*multiplePanelsController controller = (multiplePanelsController)this.AlertDetails.getScene().getUserData();
+        if (controller != null) {
+            controller.removeAlert(this.animalTag);
+        }
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("multiplePanels.fxml"));
+        Parent root = (Parent)fxmlLoader.load();
+        this.stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        this.scene = new Scene(root);
+        this.stage.setScene(this.scene);
+        this.stage.show();
+
+         */
+    }
+
+    public void deleteOnAction(ActionEvent actionEvent) throws IOException {
+       /* deletePrescription(animalTag);
+        // Remove the alert GUI from the messages GUI
+        multiplePanelsController controller = (multiplePanelsController) AlertDetails.getScene().getUserData();
+        if (controller != null) {
+            controller.removeAlert(animalTag);
+        }
+        stage = (Stage) AlertDetails.getScene().getWindow();
+        stage.close();
+        */
+        this.deletePrescription(this.animalTag);
+        multiplePanelsController controller = (multiplePanelsController)this.AlertDetails.getScene().getUserData();
+        if (controller != null) {
+            controller.removeAlert(this.animalTag);
+        }
+
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("multiplePanels.fxml"));
+        Parent root = (Parent)fxmlLoader.load();
+        this.stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        this.scene = new Scene(root);
+        this.stage.setScene(this.scene);
+        this.stage.show();
+    }
+
+    private void updateDaysRemains(String animalTag) {
+        Connection conn = LoginFormController.connectDB();
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "UPDATE prescription SET days_remains = no_of_days WHERE animal_tag = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, animalTag);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error updating days_remains: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error closing connection: " + e.getMessage());
+            }
+        }
+    }
+
+    private void deletePrescription(String animalTag){
+        Connection conn = LoginFormController.connectDB();
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "DELETE FROM prescription WHERE animal_tag = ?";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, animalTag);
+            pstmt.executeUpdate();
+//            backAlert(actionEvent);
+        } catch (SQLException e) {
+            System.err.println("Error deleting prescription: " + e.getMessage());
+            e.printStackTrace();
+        } finally{
+            try {
+                if (conn != null) {
+                    conn.close ();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error closing connection: " + e.getMessage());
+            }
+        }
+//        try {
+//            backAlert(actionEvent);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+    }
+
+    public void backAlert(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("multiplePanels.fxml"));
+        Parent root = fxmlLoader.load();
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+          stage.show();
+    }
+
 }

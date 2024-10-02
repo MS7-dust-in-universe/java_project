@@ -30,6 +30,8 @@ public class Desk5Controller {
     public void confirmation(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Desk6.fxml"));
         Parent root = fxmlLoader.load();
+        Desk6Controller desk6Controller = fxmlLoader.getController();
+        desk6Controller.setAnimalTag(animalTag);
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
