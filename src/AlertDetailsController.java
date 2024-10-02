@@ -94,7 +94,6 @@ public class AlertDetailsController {
             controller.removeAlert(this.animalTag);
         }
 
-
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("multiplePanels.fxml"));
         Parent root = (Parent)fxmlLoader.load();
         this.stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

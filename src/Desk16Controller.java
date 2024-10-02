@@ -54,10 +54,7 @@ public class Desk16Controller {
                 }
             }
         });
-
          */
-
-
 
         // Add a listener for ListView selection changes
         animalTagsListView.getSelectionModel().selectedItemProperty().addListener(

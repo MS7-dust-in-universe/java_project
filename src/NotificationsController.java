@@ -88,10 +88,13 @@ public class NotificationsController {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("alert.fxml"));
                 AnchorPane alertPane = loader.load();
-                alertController alertController = loader.getController();
+                AlertDetailsController alertController = loader.getController();
                 if (alertController != null) {
                     alertController.setAnimalTag(animalTag);
-                    vbox.getChildren().add(alertPane);
+                    Stage alertStage = new Stage();
+                    Scene alertScene = new Scene(alertPane);
+                    alertStage.setScene(alertScene);
+                    alertStage.show();
                 } else {
                     System.out.println("alertController is null");
                 }
