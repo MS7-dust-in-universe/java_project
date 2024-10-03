@@ -86,8 +86,10 @@ public class AlertDetailsController {
         */
 
         // Display the alert in the notifications GUI
-        NotificationsController notificationsController = new NotificationsController();
+       /* NotificationsController notificationsController = new NotificationsController();
         notificationsController.displayAlert(animalTag);
+
+        */
 
         /*multiplePanelsController controller = (multiplePanelsController)this.AlertDetails.getScene().getUserData();
         if (controller != null) {

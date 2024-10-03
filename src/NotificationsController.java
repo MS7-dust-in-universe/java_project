@@ -82,7 +82,7 @@ public class NotificationsController {
 
     }
 
-    public void displayAlert(String animalTag) throws IOException {
+    /*public void displayAlert(String animalTag) throws IOException {
         Platform.runLater(() -> {
             try {
                 FXMLLoader loader = new FXMLLoader();
@@ -103,4 +103,5 @@ public class NotificationsController {
             }
         });
     }
+     */
 }
